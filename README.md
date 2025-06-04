@@ -124,9 +124,11 @@ We need to prevent the tools from messing up the validity of the gray-encoded cl
 
 - To constrain max delay, we need to know about specific flip flops in our design
 - Our design must already have synthesized to see the flip flops
-- Use `openlane config.json --flow Classic -T yosys.synthesis` to run openlane only through the sythesis step
+- Use `openlane config.json --flow Classic -T openroad.staprepnr` to run openlane only through synthesis and initial STA
   - Make sure the `SYNTH_AUTONAME` flag is set to true in your configuration
 - View the netlist file (.nl.v) in the `final/nl` directory of your most recent run to see the names of synthesized flops
+- Use the provided script file to find the names of your CDC flip flops
+  - `./scripts/cdc.sh <read_clock> <write_clock>`
 - Copy and Modify the following constraints:
 ```
 puts "\[INFO\]: Setting Max Delay"
